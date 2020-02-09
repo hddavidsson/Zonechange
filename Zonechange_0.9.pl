@@ -1,6 +1,33 @@
 use strict;
 use warnings;
 use v5.10.0;
+
+=pod
+
+=head1 Name
+
+Zonechange.pl - Evaluates time differences for lifts within and between batches.
+
+=head1 SYNOPSIS
+
+
+=head1 DESCRIPTION
+
+Script for evaluating time differences between last lift batch A and first lift batch B.
+The script will froduce output files for each RegEx in %hash.
+The filenames will be concatenated by the evaluation datet and hash Key.
+
+The script will also produce a csv file with relevant times for first lift, last lift, total lifts in batch Id, and first lift next batch Id.
+The script will aslo produce a report file for all batches with times bigger than $max_time_diff.
+
+=head1 Examples
+
+  zonechange.pl SYF-PLC[68]_2019-11-2[5-9] 600
+  
+This will produce result files "2019-11-.....log" for each file and regex listed in %regex. 
+This will also produce a report file "2019-11-30_Report.txt" for each batchchange exceeding 600 s. 
+=cut
+
 #use Cwd;
 use Data::Dumper::Perltidy;
 use File::Find;
